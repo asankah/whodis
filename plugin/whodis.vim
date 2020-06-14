@@ -11,9 +11,9 @@ endif
 
 if !exists('g:WhodisKey')
   if has('mac')
-    let WhodisKey = '<D-A>'
+    let g:WhodisKey = '<D-A>'
   else
-    let WhodisKey = '<C-S-A>'
+    let g:WhodisKey = '<C-S-A>'
   endif
 endif
 
@@ -25,9 +25,4 @@ if !exists('g:WhodisHoverAttribute')
   let WhodisHoverAttribute = 'bold'
 endif
 
-let s:script_path = expand('<sfile>:p:h')
-exec
-
-execute 'pyxf ' . fnameescape(s:script_path . '/whodis.py')
-
-execute 'map <silent>' . WhodisKey . ' :pyx Whodis()<cr>'
+execute 'map <silent>' . g:WhodisKey . ' :call whodis#DoIt()<cr>'

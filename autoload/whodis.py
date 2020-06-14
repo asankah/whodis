@@ -64,7 +64,8 @@ def _LoadCompdb(compdb_path: str,
         return c['directory'], c['command'], output, is_cl
 
 
-def _FindIndexForFile(cwd: str, file_directives: List[str], filename: str) -> str:
+def _FindIndexForFile(cwd: str, file_directives: List[str],
+                      filename: str) -> str:
     for line in file_directives:
         parts = shlex.split(line)
         if len(parts) < 3:
@@ -283,7 +284,7 @@ def _CreateHighlightGroups(source_data: SourceData, note_group: int = -1):
 
     attr = vim.vars['WhodisHoverAttribute']
 
-    def make_group(i:int, guibg:str, ctermbg:int):
+    def make_group(i: int, guibg: str, ctermbg: int):
         vim.command('highlight clear WhodisLineGroup' + str(i))
         # TODO: bold looks better than underline, but requires that the font in use
         # have a bold style, at least on Mac. Maybe an option to select underline
